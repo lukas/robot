@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+   </head>
+  <body>
+	<script language='javascript'>
+	  function refreshCam() {
+     	  var camImg = document.getElementById("camera");
+	      camImg.src="cam.jpg?t="+new Date().getTime();
+	  }
+	 
+  setInterval(refreshCam, 200);
+  function call(name) {
+    console.log(name);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', name, true);
+    xhr.send();
+  }
+
+  function setSpeed(left, right) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'setSpeed?left='+left+'&right='+right, true);
+    xhr.send();
+  }
+
+  document.onkeydown = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+    if (key == 37) { //Left
+      call('l');
+    } else if (key == 38) { //up
+      call('f');
+    } else if (key == 39) {//right
+      call('r');
+    } else if (key == 40) {// down
+      call('b');
+    } else if (key == 90) {//z
+      call('stop');
+    }
+  }
+
+  if (window.DeviceMotionEvent != undefined) {
+    window.ondevicemotion = function(e) {
+      ax = event.accelerationIncludingGravity.x * 5;
+      ay = event.accelerationIncludingGravity.y * 5;
+      
+      left = ax + ay;
+      right = -ax + ay;
+      setSpeed(left, right);
+    }
+  }
+  
+  </script>
+  </body>
+  <img id="camera" src="/cam.jpg">
+  <i class="fa fa-arrow-circle-up" onmousedown='call("forward")'></i>
+  <i class="fa fa-arrow-circle-down" onmousedown='call("backward")'></i>
+  <i class="fa fa-arrow-circle-left" onmousedown='call("left")'></i>
+  <i class="fa fa-arrow-circle-right" onmousedown='call("right")'></i>
+</html>
