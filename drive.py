@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, send_file
 
 from camera_pi import Camera
 
@@ -206,6 +206,16 @@ def setSpeed():
 	
 	return ''
 
+@app.route('/latest.jpg')
+def latest():
+	filename = 'images/latest_img.jpg'
+	return send_file(filename, mimetype='image/jpg')
+
+@app.route('/data')
+def data():
+	f = open('images/latest_data', 'r')
+	data = f.read()
+	return data
 
 def gen(camera):
         """Video streaming generator function."""

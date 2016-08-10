@@ -8,8 +8,26 @@
      	  var camImg = document.getElementById("camera");
 	      camImg.src="cam.jpg?t="+new Date().getTime();
 	  }
+	  function refreshLatest() {
+	      var latestImg = document.getElementById("latest");
+	      latestImg.src="latest.jpg?t="+new Date().getTime();
+
+      	  var xhr = new XMLHttpRequest();
+	      xhr.open('GET', '/data', true);
+      	  xhr.onload = function() {
+	          console.log('HERE');
+	          var status = xhr.status;
+	          if (status == 200) {
+	                var guesses = document.getElementById("guesses");
+	                guesses.innerHTML = xhr.response	              
+	          } 
+	      };
+	      xhr.send();
+
+	  }
 	 
-  setInterval(refreshCam, 200);
+	  setInterval(refreshCam, 200);
+	  setInterval(refreshLatest, 1001);
   function call(name) {
     console.log(name);
     var xhr = new XMLHttpRequest();
@@ -60,4 +78,6 @@
   <i class="fa fa-arrow-circle-down" onmousedown='call("backward")'></i>
   <i class="fa fa-arrow-circle-left" onmousedown='call("left")'></i>
   <i class="fa fa-arrow-circle-right" onmousedown='call("right")'></i>
+  <img id="latest" src="/latest.jpg">
+  <p id="guesses"></p>
 </html>
