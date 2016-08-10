@@ -8,7 +8,7 @@ from camera_pi import Camera
 app = Flask(__name__)
 
 
-
+import os
 import time
 import atexit
 
@@ -216,6 +216,10 @@ def data():
 	f = open('images/latest_data', 'r')
 	data = f.read()
 	return data
+
+@app.route('/img_rec')
+def img_rec():
+	os.system('python image.py')
 
 def gen(camera):
         """Video streaming generator function."""

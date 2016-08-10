@@ -46,7 +46,9 @@
 	  }
 	  
   document.onkeydown = function(e) {
-    var key = e.keyCode ? e.keyCode : e.which;
+      var key = e.keyCode ? e.keyCode : e.which;
+	  console.log(key);
+
     if (key == 37) { //Left
       call('l');
     } else if (key == 38) { //up
@@ -57,8 +59,10 @@
       call('f');
     } else if (key == 90) {//z
       call('stop');
-    }
-  }
+      } else if (key == 32) { //space
+	  call('img_rec');
+	  }
+	  }
 
   if (window.DeviceMotionEvent != undefined) {
     window.ondevicemotion = function(e) {
