@@ -21,9 +21,15 @@ def classify(n):
 	do('python classify_image.py --image_file '+imageFile+' > '+dataFile)
 	do('ln -f '+imageFile+' '+latestImage);
 	do('ln -f '+dataFile+' '+latestData);
-
+	do('echo '+suffix+' > images/INDEX')
 
 i=0
-while i<1:
-	i=i+1
-	classify(i%10)
+read_data = 0
+
+with open('images/INDEX', 'r') as f:
+	read_data = int(f.read())
+
+i += read_data + 1;
+
+
+classify(i)
