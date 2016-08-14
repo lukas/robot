@@ -19,36 +19,35 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-TRIG = 23
+TRIG = [23, 5, 22]
+ECHO = [24, 6, 27]
 
-ECHO = 24
 
 def setup():
-        GPIO.setup(TRIG,GPIO.OUT)
-        
-        GPIO.setup(ECHO,GPIO.IN)
-
-        GPIO.output(TRIG, False)
+    for i in range(0,2):
+        GPIO.setup(TRIG[i],GPIO.OUT)
+        GPIO.setup(ECHO[i],GPIO.IN)
+        GPIO.output(TRIG[i], False)
 
         print "Waiting For Sensor To Settle"
         
 
-def distance():
+def distance(i):
     print "Distance Measurement In Progress"
 
-    GPIO.output(TRIG, True)
+    GPIO.output(TRIG[i], True)
 
     time.sleep(0.00001)
 
-    GPIO.output(TRIG, False)
+    GPIO.output(TRIG[i], False)
 
     pulse_end = 0;
     pulse_start = 0;
     
-    while GPIO.input(ECHO)==0:
+    while GPIO.input(ECHO[i])==0:
         pulse_start = time.time()
 
-    while GPIO.input(ECHO)==1:
+    while GPIO.input(ECHO[i])==1:
         pulse_end = time.time()
         
     if (pulse_end == 0 or pulse_start==0):
