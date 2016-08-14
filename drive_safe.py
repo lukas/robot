@@ -24,7 +24,7 @@ ECHO = [24, 6, 27]
 
 
 def setup():
-    for i in range(0,2):
+    for i in range(3):
         GPIO.setup(TRIG[i],GPIO.OUT)
         GPIO.setup(ECHO[i],GPIO.IN)
         GPIO.output(TRIG[i], False)
@@ -113,6 +113,19 @@ def gof():
         mFR.setSpeed(200)
         mFL.setSpeed(200)
 
+
+def backward(speed, dur):
+	print "Backward! "
+	mFR.run(Adafruit_MotorHAT.FORWARD)
+	mFL.run(Adafruit_MotorHAT.FORWARD)
+	mFR.setSpeed(speed)
+	mFL.setSpeed(speed)
+	time.sleep(dur)
+	
+	mFL.run(Adafruit_MotorHAT.RELEASE)
+	mFR.run(Adafruit_MotorHAT.RELEASE)
+	return ''
+        
 def stop():
         mFL.run(Adafruit_MotorHAT.RELEASE)
         mFR.run(Adafruit_MotorHAT.RELEASE)
@@ -141,27 +154,51 @@ def right(speed, dur):
 stopped = True;
 turning = False;
 THRESH = 25;
+turnCount = 0;
+maxTurnCount = 3;
 
-while(1==1):        
-    d= distance();
-    print(d);
+while(1==1):
+    mind = 1000
+    d=[]
 
-    if (d>=THRESH and stopped==True):
+    for i in range(3):
+        d.append( distance(i));
+        if d[i] < mind:
+            mind = d[i]
+        print(d[i]);
+
+    print(d)
+    print("Min d " + str(mind))
+
+    if (mind<6 and stopped==True and turning==True):
+        do('echo "backing up." | festival --tts')
+        backward(100, 1);
+    if (turnCount > maxTurnCount):
+        do('echo "backing up." | festival --tts')
+        backward(100, 1);
+        turnCount = 0;
+    if (mind>=THRESH and stopped==True):
         stopped=False;
         turning = False;
         gof();
+        turnCount = 0
 
-    elif (d<THRESH and stopped==False):
+    elif (mind<THRESH and stopped==False):
         stopped=True;
-    elif (d<THRESH and stopped==True):
-        print ("Stopping");
-        if (turning=False):
-            do('echo "oh no" | festival --tts')
-            
-        stop();
-        turning=True
+    elif (mind<THRESH and stopped==True):
 
-        left(100, 0.7);
+        if (turning==False):
+            stop();
+            turning=True
+        else:
+            turnCount+=1
+
+        if d[2] > d[0]:
+            do('echo "turning left." | festival --tts')
+            left(100, 0.7);
+        else:
+            do('echo "turning right." | festival --tts')
+            right(100, 0.7);
 
         time.sleep(0.3);
         stopped=True
