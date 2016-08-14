@@ -21,7 +21,7 @@ def classify(n):
 	do('python classify_image.py --image_file '+imageFile+' > '+dataFile)
 	do('ln -f '+imageFile+' '+latestImage);
 	do('ln -f '+dataFile+' '+latestData);
-
+        do('cut -d\'(\' -f1 '+dataFile+' | festival --tts');
 
 i=0
 while i<1:
