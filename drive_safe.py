@@ -171,10 +171,10 @@ while(1==1):
     print("Min d " + str(mind))
 
     if (mind<6 and stopped==True and turning==True):
-        do('echo "backing up." | festival --tts')
+        do('echo "backing up." | flite ')
         backward(100, 1);
     if (turnCount > maxTurnCount):
-        do('echo "backing up." | festival --tts')
+        do('echo "backing up." | flite ')
         backward(100, 1);
         turnCount = 0;
     if (mind>=THRESH and stopped==True):
@@ -194,10 +194,10 @@ while(1==1):
             turnCount+=1
 
         if d[2] > d[0]:
-            do('echo "turning left." | festival --tts')
+            do('echo "turning left." | flite ')
             left(100, 0.7);
         else:
-            do('echo "turning right." | festival --tts')
+            do('echo "turning right." | flite ')
             right(100, 0.7);
 
         time.sleep(0.3);
