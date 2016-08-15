@@ -20,11 +20,11 @@ def classify(n):
         do('echo "I\'m thinking." | flite')
 	do('cp /dev/shm/mjpeg/cam.jpg '+imageFile);
 	do('ln -f '+imageFile+' '+latestImage);
-	do('python classify_image.py --image_file '+imageFile+' > '+dataFile)
+	do('python run_and_parse_inception.py '+imageFile+ " " +dataFile)
 
 	do('ln -f '+dataFile+' '+latestData);
 
-        do('{ echo "I think I see a "; cut -d\'(\' -f1 '+dataFile+' | cut -d\',\' -f1  | sed -e \'$ ! s/$/. or maybe a/\'; } | flite')
+        do('{ echo "I think I see a "; cat '+dataFile+' |  sed -e \'$ ! s/$/. or maybe a/\'; } | flite')
 
 	do('echo '+suffix+' > images/INDEX')
 
