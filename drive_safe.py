@@ -1,4 +1,3 @@
-
 import subprocess
 
 def do(cmd):
@@ -33,7 +32,7 @@ def setup():
         
 
 def distance(i):
-    print "Distance Measurement In Progress"
+#    print "Distance Measurement In Progress"
 
     GPIO.output(TRIG[i], True)
 
@@ -59,7 +58,7 @@ def distance(i):
 
     distance = round(distance, 2)
 
-    print "Distance:",distance,"cm"
+ #   print "Distance:",distance,"cm"
 
     return distance
 
@@ -113,6 +112,11 @@ def gof():
         mFR.setSpeed(200)
         mFL.setSpeed(200)
 
+def setSpeed(speed):
+    mBR.setSpeed(speed)
+    mBL.setSpeed(speed)
+    mFR.setSpeed(speed)
+    mFL.setSpeed(speed)
 
 def backward(speed, dur):
 	print "Backward! "
@@ -151,6 +155,24 @@ def right(speed, dur):
         return ''
 
 
+def getAttention():
+        with open('../python-mindwave-mobile/ATTENTION', 'r') as f:
+            read_data = f.read()
+            print("Read Speed: " + read_data)
+            
+        spd=0
+        if read_data == '':
+            spd = 0
+        else:
+            spd = int(read_data)
+
+        if (spd < 50):
+            newSpd = 0
+        else:
+            newSpd = (spd-50)*4
+
+        return newSpd
+    
 stopped = True;
 turning = False;
 THRESH = 25;
@@ -158,6 +180,14 @@ turnCount = 0;
 maxTurnCount = 3;
 
 while(1==1):
+    while True:
+        s = getAttention();
+        print "Speed "+str(s)
+        if s > 0:
+            break
+        setSpeed(0)
+        time.sleep(0.2)
+        
     mind = 1000
     d=[]
 
@@ -167,17 +197,17 @@ while(1==1):
             mind = d[i]
         print(d[i]);
 
-    print(d)
-    print("Min d " + str(mind))
+    #print(d)
+    #print("Min d " + str(mind))
 
     if (mind<6 and stopped==True and turning==True):
         do('echo "backing up." | flite ')
         backward(100, 1);
-    if (turnCount > maxTurnCount):
+    elif (turnCount > maxTurnCount):
         do('echo "backing up." | flite ')
         backward(100, 1);
         turnCount = 0;
-    if (mind>=THRESH and stopped==True):
+    elif (mind>=THRESH and stopped==True):
         stopped=False;
         turning = False;
         gof();
@@ -202,3 +232,7 @@ while(1==1):
 
         time.sleep(0.3);
         stopped=True
+    elif (turning==False):  # robot is moving happily
+    
+        newSpd = getAttention();
+        setSpeed(newSpd);
