@@ -1,6 +1,13 @@
 import RPi.GPIO as GPIO
 import sys
 import time
+import atexit
+
+# recommended for auto-disabling motors on shutdown!
+def turnOffGPIO():
+	GPIO.cleanup()	
+
+atexit.register(turnOffGPIO)
 
 GPIO.setmode(GPIO.BCM)
 
@@ -40,5 +47,5 @@ distance = round(distance, 2)
 
 print "Distance:",distance,"cm"
 
-GPIO.cleanup()
+
             

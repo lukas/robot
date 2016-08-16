@@ -18,8 +18,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-TRIG = [23, 5, 22]
-ECHO = [24, 6, 27]
+TRIG = [23, 17, 22]
+ECHO = [24, 18, 27]
 
 
 def setup():
@@ -156,7 +156,7 @@ def right(speed, dur):
 
 
 def getAttention():
-        with open('../python-mindwave-mobile/ATTENTION', 'r') as f:
+        with open('../python-mindave-mobile/ATTENTION', 'r') as f:
             read_data = f.read()
             print("Read Speed: " + read_data)
             
@@ -180,59 +180,59 @@ turnCount = 0;
 maxTurnCount = 3;
 
 while(1==1):
-    while True:
-        s = getAttention();
-        print "Speed "+str(s)
-        if s > 0:
-            break
-        setSpeed(0)
-        time.sleep(0.2)
+	print("driving!")
+
+#	while True:
+#		s = getAttention();
+#        print "Speed "+str(s)
+#        if s > 0:
+#            break
+#        setSpeed(0)
+#        time.sleep(0.2)
         
-    mind = 1000
-    d=[]
+	mind = 1000
+	d=[]
 
-    for i in range(3):
-        d.append( distance(i));
-        if d[i] < mind:
-            mind = d[i]
-        print(d[i]);
+	for i in range(3):
+		d.append( distance(i));
+		if d[i] < mind:
+			mind = d[i]
+		print(d[i]);
 
-    #print(d)
-    #print("Min d " + str(mind))
+	print(d)
+	print("Min d " + str(mind))
 
-    if (mind<6 and stopped==True and turning==True):
-        do('echo "backing up." | flite ')
-        backward(100, 1);
-    elif (turnCount > maxTurnCount):
-        do('echo "backing up." | flite ')
-        backward(100, 1);
-        turnCount = 0;
-    elif (mind>=THRESH and stopped==True):
-        stopped=False;
-        turning = False;
-        gof();
-        turnCount = 0
+	if (mind<6 and stopped==True and turning==True):
+		do('echo "backing up." | flite ')
+		backward(255, 1)
+	elif (turnCount > maxTurnCount):
+		do('echo "backing up." | flite ')
+		backward(255, 1);
+		turnCount = 0;
+	elif (mind>=THRESH and stopped==True):
+		stopped=False;
+		turning = False;
+		gof();
+		turnCount = 0
+	elif (mind<THRESH and stopped==False):
+		stopped=True;
 
-    elif (mind<THRESH and stopped==False):
-        stopped=True;
-    elif (mind<THRESH and stopped==True):
+	elif (mind<THRESH and stopped==True):
+		if (turning==False):
+			stop();
+			turning=True
+		else:
+			turnCount+=1
 
-        if (turning==False):
-            stop();
-            turning=True
-        else:
-            turnCount+=1
+		if d[2] > d[0]:
+			do('echo "turning left." | flite ')
+			left(255, 0.5);
+		else:
+			do('echo "turning right." | flite ')
+			right(255, 0.5);
 
-        if d[2] > d[0]:
-            do('echo "turning left." | flite ')
-            left(100, 0.7);
-        else:
-            do('echo "turning right." | flite ')
-            right(100, 0.7);
-
-        time.sleep(0.3);
-        stopped=True
-    elif (turning==False):  # robot is moving happily
-    
-        newSpd = getAttention();
-        setSpeed(newSpd);
+		time.sleep(0.3);
+		stopped=True
+#	elif (turning==False):	# robot is moving happily
+		#newSpd = getAttention();
+		#setSpeed(newSpd);

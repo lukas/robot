@@ -20,7 +20,7 @@ def classify(n):
         do('echo "I\'m thinking." | flite')
 	do('cp /dev/shm/mjpeg/cam.jpg '+imageFile);
 	do('ln -f '+imageFile+' '+latestImage);
-	do('python run_and_parse_inception.py '+imageFile+ " " +dataFile)
+	do('bash run_and_parse_inception.sh '+imageFile+ " " +dataFile)
 
 	do('ln -f '+dataFile+' '+latestData);
 

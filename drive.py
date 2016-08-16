@@ -206,13 +206,13 @@ def setSpeed():
 	
 	return ''
 
-@app.route('/img')
+@app.route('/latest.jpg')
 def latest():
-	img_num = request.args.get('i')
-	if img_num is None:
-		filename = 'images/latest_img.jpg'
-	else:
-		filename = 'images/img'+img_num+'.jpg'
+#	img_num = request.args.get('i')
+#	if img_num is None:
+	filename = 'images/latest_img.jpg'
+#	else:
+#		filename = 'images/img'+img_num+'.jpg'
 		
 	return send_file(filename, mimetype='image/jpg')
 
