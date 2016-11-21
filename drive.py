@@ -26,9 +26,9 @@ atexit.register(turnOffMotors)
 
 ################################# DC motor test!
 mFL = mh.getMotor(1)
-mBL = mh.getMotor(2)
+mBL = mh.getMotor(4)
 mBR = mh.getMotor(3)
-mFR = mh.getMotor(4)
+mFR = mh.getMotor(2)
 
 def wakeup(m):
         # set the speed to start, from 0 (off) to 255 (max speed)

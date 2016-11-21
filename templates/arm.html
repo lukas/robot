@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+   </head>
+  <body>
+	<script language='javascript'>
+	  
+  function call(name) {
+    console.log(name);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', name, true);
+    xhr.send();
+  }
+
+  function slider(num, value) {
+    console.log(num);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET',  "slider?num="+num+"&value="+value);
+    xhr.send();
+  }
+
+  document.onkeyup = function(e) {
+    call('stop');
+  }
+	  
+  document.onkeydown = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+	  console.log(key);
+
+    if (key == 37) { //Left
+      call('l');
+    } else if (key == 38) { //up
+      call('b');
+    } else if (key == 39) {//right
+      call('r');
+    } else if (key == 40) {// down
+      call('f');
+    } else if (key == 90) {//z
+      call('stop');
+    } else if (key == 32) { //space
+  call('img_rec');
+  }
+	  }
+
+
+  
+  </script>
+<ul style="list-style-type: none;">
+<li><input type="range"  min="0" max="100" onchange="slider(0,this.value)"/>
+<li><input type="range"  min="0" max="100" onchange="slider(1,this.value)"/>
+<li><input type="range"  min="0" max="100" onchange="slider(2,this.value)"/>
+<li><input type="range"  min="0" max="100" onchange="slider(3,this.value)"/>
+<li><input type="range"  min="0" max="100" onchange="slider(4,this.value)"/>
+<li><input type="range"  min="0" max="100" onchange="slider(5,this.value)"/>
+
+</ul>	
+  </body>
+  
+</html>
