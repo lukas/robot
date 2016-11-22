@@ -1,0 +1,18 @@
+body {
+    font-family: sans-serif; background: #eee;
+}
+input[type="number"] {
+    width: 50px;
+}
+
+.min {
+    readonly: "readonly"
+}
+
+.max {
+    readonly: "readonly"
+}
+
+.target {
+    readonly: "readonly"
+}
