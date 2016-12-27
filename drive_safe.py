@@ -18,6 +18,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+#left center right
 TRIG = [23, 17, 22]
 ECHO = [24, 18, 27]
 

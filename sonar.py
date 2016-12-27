@@ -3,6 +3,10 @@ import sys
 import time
 import atexit
 
+#check a sonar with trigger argv1 and echo argv2
+#example usage
+#python sonar.py 22 27
+
 # recommended for auto-disabling motors on shutdown!
 def turnOffGPIO():
 	GPIO.cleanup()	

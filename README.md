@@ -4,12 +4,23 @@ This will run a simple robot with a webserver on a raspberry PI with the Adafrui
 
 This is all designed for a Raspberry PI 3 with the Adafruit Motor Hat for cars and the Adafruit Servo Hat for arms
 
-# Programs
+## Programs
 
-The robot.py program will run commands from the commandline
-The drive_server.py runs a web server for driving around
+robot.py program will run commands from the commandline
+sonar.py tests sonar wired into GPIO ports 
+drive_server.py runs a web server for driving around
+drive_safe.py runs a simple object avoidance algorithm
 
-# Wiring Wheels
+## Wiring The Robot
+### Sonar
+
+If you want to use the default sonar configuation
+
+Left sonar trigger GPIO port 23 echo 24
+Center sonar trigger GPIO port 17 echo 18
+Right sonar trigger GPIO port 22 echo 27
+
+### Wheels
 
 You can easily change this but this is what wheels.py expects
 
@@ -19,14 +30,17 @@ M3 - Back Right (optional)
 M4 - Front Right 
 
 
-## Install
+## Installation
 
+### server
 
-### nginx
+To run a webserver in the background with a camera you need to setup gunicorn and nginx
 
-copy the configuration file at nginx/nginx.conf to /etc/nginx/nginx.conf
+#### nginx
 
-### gunicorn
+copy the configuration file from nginx/nginx.conf to /etc/nginx/nginx.conf
+
+#### gunicorn
 
 To setup the gunicorn webservice service modify
 
