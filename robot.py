@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-import drive
+import wheels
 import sys
 
 usage = '''
