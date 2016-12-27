@@ -17,14 +17,17 @@ def classify(n):
 	dataFile = 'images/data'+suffix
 	latestImage = 'images/latest_img.jpg'
 	latestData = 'images/latest_data'
-        do('echo "I\'m thinking." | flite')
+	do('echo "I\'m thinking." | flite -voice slt')
 	do('cp /dev/shm/mjpeg/cam.jpg '+imageFile);
 	do('ln -f '+imageFile+' '+latestImage);
+	do('echo "thinking" > ' + dataFile);
+	do('ln -f '+dataFile+' '+latestData);
 	do('bash run_and_parse_inception.sh '+imageFile+ " " +dataFile)
 
-	do('ln -f '+dataFile+' '+latestData);
 
-        do('{ echo "I think I see a "; cat '+dataFile+' |  sed -e \'$ ! s/$/. or maybe a/\'; } | flite')
+
+
+        do('{ echo "I think I see ah "; head -1 '+dataFile+' |  sed -e \'$ ! s/$/. or maybe a/\'; } | flite -voice slt')
 
 	do('echo '+suffix+' > images/INDEX')
 
