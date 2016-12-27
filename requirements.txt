@@ -1,0 +1,4 @@
+Adafruit-MotorHAT
+camera_pi
+flask
+RPi.GPIO
