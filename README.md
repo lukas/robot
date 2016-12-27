@@ -42,21 +42,4 @@ copy the configuration file from nginx/nginx.conf to /etc/nginx/nginx.conf
 
 #### gunicorn
 
-To setup the gunicorn webservice service modify
-
-/etc/systemd/system/gunicorn.service
-
-```
-[Unit]
-Description=gunicorn daemon
-After=network.target
-
-[Service]
-User=pi
-Group=www-data
-WorkingDirectory=/home/pi/robot
-ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:/home/pi/drive.sock drive:app
-
-[Install]
-WantedBy=multi-user.target
-```
+copy configuration file from gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
