@@ -9,7 +9,9 @@ This is all designed for a Raspberry PI 3 with the Adafruit Motor Hat for cars a
 The robot.py program will run commands from the commandline
 The drive_server.py runs a web server for driving around
 
-# Wiring
+# Wiring Wheels
+
+You can easily change this but this is what wheels.py expects
 
 M1 - Front Left
 M2 - Back Left (optional)
@@ -19,7 +21,14 @@ M4 - Front Right
 
 ## Install
 
-To setup the webservice service modify
+
+### nginx
+
+copy the configuration file at nginx/nginx.conf to /etc/nginx/nginx.conf
+
+### gunicorn
+
+To setup the gunicorn webservice service modify
 
 /etc/systemd/system/gunicorn.service
 
