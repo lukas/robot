@@ -54,9 +54,17 @@ Test that your hat is attached and visible with
 sudo i2cdetect -y 1
 ```
 
+Install dependencies
 
+```
+pip install -r requirements.txt
+```
 
+At this point you should be able to drive your robot locally, try:
 
+```
+./robot.py forward
+```
 
 ### server
 
