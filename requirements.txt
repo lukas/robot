@@ -1,4 +1,7 @@
+ez_setup
 Adafruit-MotorHAT
-camera_pi
+picamera
 flask
 RPi.GPIO
+smbus
+
