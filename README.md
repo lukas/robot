@@ -72,16 +72,44 @@ To run a webserver in the background with a camera you need to setup gunicorn an
 
 #### nginx
 
+install nginx
+
+```
+sudo apt-get install nginx
+```
+
 copy the configuration file from nginx/nginx.conf to /etc/nginx/nginx.conf
 
 ```
 sudo cp nginx/nginx.conf /etc/nginx/nginx.conf
 ```
 
+restart nginx
+
+```
+sudo nginx -s reload
+```
+
 #### gunicorn
+
+install gunicorn
+
+```
+sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
+```
 
 copy configuration file from gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
 
 ```
 sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
 ```
+
+start gunicorn service
+
+```
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn
+```
+
+Your webservice should be started now.  You can try driving your robot with buttons or arrow keys
+
