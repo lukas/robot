@@ -87,3 +87,11 @@ copy configuration file from gunicorn/gunicorn.service /etc/systemd/system/gunic
 ```
 sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
 ```
+
+start the gunicorn service
+
+
+```
+sudo systemctl enable gunicorn
+sudo systemctl start gunicorn
+```
