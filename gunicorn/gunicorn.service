@@ -8,7 +8,7 @@ After=network.target
 User=pi
 Group=www-data
 WorkingDirectory=/home/pi/robot
-ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:/home/pi/drive.sock drive_safe:app
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/home/pi/drive.sock drive_server:app
 
 [Install]
 WantedBy=multi-user.target

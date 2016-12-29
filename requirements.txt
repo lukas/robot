@@ -1,0 +1,7 @@
+ez_setup
+Adafruit-MotorHAT
+picamera
+flask
+RPi.GPIO
+smbus
+
