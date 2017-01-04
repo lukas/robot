@@ -51,7 +51,7 @@ sudo apt-get install i2c-tools python-smbus python3-smbus
 Test that your hat is attached and visible with
 
 ```
-sudo i2cdetect -y 1
+i2cdetect -y 1
 ```
 
 Install dependencies
@@ -113,3 +113,13 @@ sudo systemctl start gunicorn
 
 Your webservice should be started now.  You can try driving your robot with buttons or arrow keys
 
+#### camera
+
+In order to stream from the camera you can use RPi-cam.  It's documented at http://elinux.org/RPi-Cam-Web-Interface but you can also just run the following
+
+```
+git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
+cd RPi_Cam_Web_Interface
+chmod u+x *.sh
+./install.sh
+```
