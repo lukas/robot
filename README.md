@@ -72,11 +72,7 @@ To run a webserver in the background with a camera you need to setup gunicorn an
 
 #### nginx
 
-install nginx
-
-```
-sudo apt-get install nginx
-```
+Nginx is a lightway fast reverse proxy - we store the camera image in RAM and serve it up directly.  This was the only way I was able to get any kind of decent fps from the raspberry pi camera.  We also need to proxy to gunicorn so that the user can control the robot from a webpage.
 
 copy the configuration file from nginx/nginx.conf to /etc/nginx/nginx.conf
 
@@ -108,6 +104,7 @@ start gunicorn service
 
 ```
 sudo systemctl daemon-reload
+sudo systemctl enable gunicorn
 sudo systemctl start gunicorn
 ```
 
@@ -123,3 +120,7 @@ cd RPi_Cam_Web_Interface
 chmod u+x *.sh
 ./install.sh
 ```
+
+Now a stream of images from the camera should be constantly updating the file at /dev/shm/mjpeg.  Nginx will serve up the image directly if you request localhost/cam.jpg.
+
+
