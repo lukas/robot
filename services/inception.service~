@@ -1,0 +1,14 @@
+#goes in /etc/systemd/system/inception.service
+
+[Unit]
+Description=inception daemon
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/robot
+ExecStart=/usr/bin/gunicorn --workers 1 -b0.0.0.0:9999 --timeout 10000 inception_server:app 
+
+[Install]
+WantedBy=multi-user.target

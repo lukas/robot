@@ -1,0 +1,14 @@
+#goes in /etc/systemd/system/web.service
+
+[Unit]
+Description=gunicorn web daemon
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/robot
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/home/pi/drive.sock drive_server:app
+
+[Install]
+WantedBy=multi-user.target
