@@ -2,14 +2,19 @@
 
 This will run a simple robot with a webserver on a raspberry PI with the Adafruit Motor Hat.  I wrote this up for myself for fun and to help me remember how I set things up.
 
-This is all designed for a Raspberry PI 3 with the Adafruit Motor Hat for cars and the Adafruit Servo Hat for arms
+This is all designed for a Raspberry PI 3 with the Adafruit Motor Hat for cars and the Adafruit Servo Hat for arms.
+
+I use cheap HC-SR04 sonar sensors but I think other ones will work fine.
+
+Pretty much any chassis with a DC motors (4wd or 2wd) works well.
 
 ## Programs
 
 robot.py program will run commands from the commandline
 sonar.py tests sonar wired into GPIO ports 
-drive_server.py runs a web server for driving around
+drive_server.py runs a web server for controlling a robot wheels and arms
 drive_safe.py runs a simple object avoidance algorithm
+inception_server.py runs an image classifying microservice
 
 ## Wiring The Robot
 ### Sonar
