@@ -102,15 +102,15 @@ sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
 copy configuration file from gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
 
 ```
-sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
+sudo cp services/web.service /etc/systemd/system/web.service
 ```
 
-start gunicorn service
+start gunicorn web app service
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable gunicorn
-sudo systemctl start gunicorn
+sudo systemctl enable web
+sudo systemctl start web
 ```
 
 Your webservice should be started now.  You can try driving your robot with buttons or arrow keys
@@ -127,5 +127,26 @@ chmod u+x *.sh
 ```
 
 Now a stream of images from the camera should be constantly updating the file at /dev/shm/mjpeg.  Nginx will serve up the image directly if you request localhost/cam.jpg.
+
+#### tensorflow
+
+There is a great project at https://github.com/samjabrahams/tensorflow-on-raspberry-pi that gives instructions on installing tensorflow on the Raspberry PI.  Recently it's gotten much easier, just do
+
+```
+wget https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v0.11.0/tensorflow-0.11.0-cp27-none-linux_armv7l.whl
+sudo pip install tensorflow-0.11.0-cp27-none-linux_armv7l.whl
+```
+
+Next start a tensorflow service that loads up an inception model and does object recognition the the inception model
+
+```
+sudo cp services/inception.service /etc/systemd/system/inception.service
+sudo systemctl daemon-reload
+sudo systemctl enable inception
+sudo systemctl start inception
+```
+
+
+
 
 

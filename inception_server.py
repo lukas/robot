@@ -48,7 +48,7 @@ tf.app.flags.DEFINE_integer('num_top_predictions', 5,
                             """Display this many predictions.""")
 
 DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
-IMAGE_PATH = '/tmp/imagenet/cropped_panda.jpg'
+IMAGE_PATH = '/dev/shm/mjpeg/cam.jpg'
 
 
 class NodeLookup(object):
