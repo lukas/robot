@@ -95,11 +95,8 @@ sudo nginx -s reload
 
 install gunicorn
 
-```
-sudo cp gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
-```
 
-copy configuration file from gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
+copy configuration file from services/web.service /etc/systemd/system/web.service
 
 ```
 sudo cp services/web.service /etc/systemd/system/web.service
