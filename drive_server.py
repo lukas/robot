@@ -20,6 +20,13 @@ def backward():
 	wheels.backward(200, 3)
 	return ''
 
+
+@app.route('/shake')
+def shake():
+	wheels.left(200, 0.2)
+	wheels.right(200, 0.2)
+        return ''
+
 @app.route('/left')
 def left():
 	wheels.left(200, 3)

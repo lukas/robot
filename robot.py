@@ -55,8 +55,8 @@ elif (cmd == 'wheel4'):
 	wheels.spinMotor(4, 200, 1)
 
 elif (cmd == 'shake'):
-	wheels.left(200, 0.25)
-	wheels.right(200, 0.25)
+	wheels.left(200, 0.2)
+	wheels.right(200, 0.2)
 
 else:
 	print usage
