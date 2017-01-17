@@ -1,7 +1,7 @@
-#goes in /etc/systemd/system/gunicorn.service
+#goes in /etc/systemd/system/web.service
 
 [Unit]
-Description=gunicorn daemon
+Description=gunicorn web daemon
 After=network.target
 
 [Service]
