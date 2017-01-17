@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, Response, send_file
 from camera_pi import Camera
 import wheels
+import speaker
 
 app = Flask(__name__)
 
@@ -59,6 +60,12 @@ def stop():
 def latest():
 	filename = 'images/latest_img.jpg'
 	return send_file(filename, mimetype='image/jpg')
+
+@app.route('/say')
+def say():
+        text = request.args.get('text')
+        speaker.say(text)
+        return ''
 
 @app.route('/data')
 def data():
