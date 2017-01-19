@@ -35,11 +35,17 @@ def autodrive(dur):
                                 wheels.stop()
 				if (ldist < rdist):
 					mode=RIGHT
-					wheels.right(-100)
+					wheels.backward(-100)
+					time.sleep(1)
+					wheels.right(-250)
+					time.sleep(1)
 				else:
 					mode=LEFT
-					wheels.left(-100)
-				
+					wheels.backward(-100)
+					time.sleep(1)
+					wheels.left(-250)
+					time.sleep(1)
+					
 		if (mode==LEFT or mode==RIGHT):
 			if (cdist > 50):
 				mode=FORWARD
