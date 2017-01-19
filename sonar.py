@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import os
 import time
+import atexit
 
 def setup():
     for i in range(3):
@@ -21,13 +22,17 @@ if (os.environ['LTRIG']):
 	GPIO.setmode(GPIO.BCM)
 	setup()
 
+def turnOffGPIO():
+	GPIO.cleanup()
 
+atexit.register(turnOffGPIO)
+		
 
 
 
 def distance(i):
 #    print "Distance Measurement In Progress"
-    print TRIG[i]
+
     GPIO.output(TRIG[i], True)
 
     time.sleep(0.00001)
