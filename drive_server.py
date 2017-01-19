@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, Response, send_file
 from camera_pi import Camera
 import wheels
 import speaker
+import autonomous
 
 app = Flask(__name__)
 
@@ -68,6 +69,14 @@ def latest():
 	filename = 'images/latest_img.jpg'
 	return send_file(filename, mimetype='image/jpg')
 
+
+@app.route('/drive')
+def drive():
+        time = request.args.get('time')
+        if time is None:
+                time = 10
+        autodrive(time)
+        
 @app.route('/say')
 def say():
         text = request.args.get('text')
