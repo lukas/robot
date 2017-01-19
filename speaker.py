@@ -1,6 +1,10 @@
 import subprocess
 
 def say(text):
-    subprocess.Popen(['flite', '-t',  text])
+	voice = os.environ['VOICE']:
+	if voice:
+		subprocess.Popen(['flite', '-voice', voice,'-t',  text])
+	else:	
+		subprocess.Popen(['flite', '-t',  text])
 
 

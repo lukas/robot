@@ -86,20 +86,20 @@ def backward(speed, dur=-1):
 
         
 def left(speed, dur=-1):
-	spin(mFR, speed)
-	spin(mFL, -speed)
-	spin(mBR, speed)
-	spin(mBL, -speed)
+	spin(mFR, -speed)
+	spin(mFL, speed)
+	spin(mBR, -speed)
+	spin(mBL, speed)
 
 	if (dur >- 0):
 		time.sleep(dur)
 		stop()
 
 def right(speed, dur=-1):
-	spin(mFR, -speed)
-	spin(mFL, speed)
-	spin(mBR, -speed)
-	spin(mBL, speed)
+	spin(mFR, speed)
+	spin(mFL, -speed)
+	spin(mBR, speed)
+	spin(mBL, -speed)
 
 	if (dur >- 0):
 		time.sleep(dur)

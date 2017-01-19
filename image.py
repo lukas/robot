@@ -27,7 +27,7 @@ def classify(n):
 
 
 
-        do('{ echo "I think I see ah "; head -1 '+dataFile+' |  sed -e \'$ ! s/$/. or maybe a/\'; } | flite -voice slt')
+	do('{ echo "I think I see ah "; head -1 '+dataFile+' |  sed -e \'$ ! s/$/. or maybe a/\'; } | flite -voice slt')
 
 	do('echo '+suffix+' > images/INDEX')
 
