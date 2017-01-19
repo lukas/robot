@@ -3,6 +3,11 @@ import os
 import time
 import atexit
 import sys
+from subprocess import call
+
+if (os.path.exists("configure.sh")):
+    print "Loading configuation file"
+    call(["bash", "configure.sh"])
 
 def setup():
     for i in range(3):

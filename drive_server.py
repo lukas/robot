@@ -72,10 +72,12 @@ def latest():
 
 @app.route('/drive')
 def drive():
-        time = request.args.get('time')
-        if time is None:
-                time = 10
-        autodrive(time)
+        time = 10
+        if 'time' in request.args:
+                time = request.args.get('time')
+                
+
+        autonomous.autodrive(time)
         
 @app.route('/say')
 def say():
