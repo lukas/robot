@@ -75,7 +75,7 @@ def latest():
 def drive():
         time = 10
         if 'time' in request.args:
-                time = request.args.get('time')
+                time = int(request.args.get('time'))
                 
 
         autonomous.autodrive(time)
