@@ -5,6 +5,7 @@ from camera_pi import Camera
 import wheels
 import speaker
 import autonomous
+import os
 
 app = Flask(__name__)
 
@@ -78,6 +79,8 @@ def drive():
                 
 
         autonomous.autodrive(time)
+
+        return ''
         
 @app.route('/say')
 def say():
@@ -96,10 +99,12 @@ def data():
 	f = open(filename, 'r')
 	data = f.read()
 	return data
-
+   
 @app.route('/img_rec')
 def img_rec():
-	os.system('python image.py')
+        wheels.stop()
+#	os.system('python image.py')
+        return ''
 
 def gen(camera):
         """Video streaming generator function."""

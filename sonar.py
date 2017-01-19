@@ -4,10 +4,8 @@ import time
 import atexit
 import sys
 from subprocess import call
+import configure
 
-if (os.path.exists("configure.sh")):
-    print "Loading configuation file"
-    call(["bash", "configure.sh"])
 
 def setup():
     for i in range(3):
@@ -17,16 +15,25 @@ def setup():
 
         print "Waiting For Sensor To Settle"
 
-if ('LTRIG' in os.environ):
-	TRIG = [int(os.environ['LTRIG']),
-			int(os.environ['CTRIG']),
-			int(os.environ['RTRIG'])]
-	ECHO = [int(os.environ['LECHO']),
-			int(os.environ['CECHO']),
-			int(os.environ['RECHO'])]
+#if ('LTRIG' in os.environ):
+#	TRIG = [int(os.environ['LTRIG']),
+#			int(os.environ['CTRIG']),
+#			int(os.environ['RTRIG'])]
+#	ECHO = [int(os.environ['LECHO']),
+#			int(os.environ['CECHO']),
+#			int(os.environ['RECHO'])]
 
-	GPIO.setmode(GPIO.BCM)
-	setup()
+
+if ('LTRIG' in configure.data):
+    TRIG = [int(configure.data['LTRIG']),
+            int(configure.data['CTRIG']),
+            int(configure.data['RTRIG'])]
+    ECHO = [int(configure.data['LECHO']),
+            int(configure.data['CECHO']),
+            int(configure.data['RECHO'])]
+
+    GPIO.setmode(GPIO.BCM)
+    setup()
 
 def turnOffGPIO():
 	GPIO.cleanup()
