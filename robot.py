@@ -2,6 +2,7 @@
 
 import wheels
 import sys
+import sonar
 
 usage = '''
 robot
@@ -57,6 +58,13 @@ elif (cmd == 'wheel4'):
 elif (cmd == 'shake'):
 	wheels.left(200, 0.2)
 	wheels.right(200, 0.2)
+
+elif (cmd == 'leftdist'):
+	print sonar.ldist()
+elif (cmd == 'rightdist'):
+	print sonar.rdist()
+elif (cmd == 'centerdist'):
+	print sonar.cdist()
 
 else:
 	print usage
