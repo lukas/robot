@@ -17,9 +17,9 @@ data={}
 data["LTRIG"] = 17 # default pin for left sonar trigger
 data["CTRIG"] = 23 # default pin for center sonar trigger
 data["RTRIG"] = 22 # default pin for right sonar trigger
-data["LTRIG"] = 18 # default pin for left sonar echo
-data["CTRIG"] = 24 # default pin for center sonar echo
-data["RTRIG"] = 27 # default pin for right sonar echo
+data["LECHO"] = 18 # default pin for left sonar echo
+data["CECHO"] = 24 # default pin for center sonar echo
+data["RECHO"] = 27 # default pin for right sonar echo
 
 if os.path.isfile('robot.conf'):
 	with open('robot.conf') as data_file:
