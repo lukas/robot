@@ -3,6 +3,7 @@
 import wheels
 import sys
 import sonar
+import configure
 
 usage = '''
 robot
