@@ -3,6 +3,7 @@
 import wheels
 import sys
 import sonar
+import configure
 
 usage = '''
 robot
@@ -11,23 +12,34 @@ Tell the robot what to do.
 
 Commands 
 
+Actions
+-------
 forward
 backward
 left
 right
 stop
+shake
+
+Test Wheels
+-----------
 wheel1
 wheel2
 wheel3
 wheel4
-shake
+
+Test Sonar
+----------
+leftdist
+rightdist
+centerdist 
 '''
 
 print sys.argv
 
 if (len(sys.argv) == 1):
 	print usage
-	exit
+	exit(1)
 
 cmd = sys.argv[1]
 	

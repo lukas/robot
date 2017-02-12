@@ -10,11 +10,14 @@ Pretty much any chassis with a DC motors (4wd or 2wd) works well.
 
 ## Programs
 
-robot.py program will run commands from the commandline
-sonar.py tests sonar wired into GPIO ports 
-drive_server.py runs a web server for controlling a robot wheels and arms
-drive_safe.py runs a simple object avoidance algorithm
-inception_server.py runs an image classifying microservice
+- robot.py program will run commands from the commandline
+- drive_server.py runs a web server for controlling a robot wheels and arms
+
+- sonar.py tests sonar wired into GPIO ports
+- wheels.py tests simple DC motor wheels
+- arm.py tests a servo controlled robot arm
+- autonomous.py implements a simple driving algorithm using the wheels and sonal
+- inception_server.py runs an image classifying microservice
 
 # Example Robots
 
@@ -27,9 +30,11 @@ Here are two robots I made that use this software
 
 If you want to use the default sonar configuation
 
-Left sonar trigger GPIO port 23 echo 24
-Center sonar trigger GPIO port 17 echo 18
-Right sonar trigger GPIO port 22 echo 27
+Left sonar trigger GPIO pin 23 echo 24
+Center sonar trigger GPIO pin 17 echo 18
+Right sonar trigger GPIO pin 22 echo 27
+
+You can modify the pins by making a robot.conf file.
 
 ### Wheels
 
@@ -47,7 +52,7 @@ M4 - Front Right
 
 There are a ton of articles on how to do basic setup of a Raspberry PI - one good one is here https://www.howtoforge.com/tutorial/howto-install-raspbian-on-raspberry-pi/
 
-You will need to turn on i2c and optionall the camera
+You will need to turn on i2c and optionally the camera
 
 ```
 raspi-config
