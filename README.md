@@ -16,6 +16,12 @@ drive_server.py runs a web server for controlling a robot wheels and arms
 drive_safe.py runs a simple object avoidance algorithm
 inception_server.py runs an image classifying microservice
 
+# Example Robots
+
+Here are two robots I made that use this software
+
+![Robots](https://joyfulgrit.files.wordpress.com/2013/10/img_0183.jpg?w=700)
+
 ## Wiring The Robot
 ### Sonar
 
