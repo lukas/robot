@@ -23,6 +23,12 @@ High level overview can be found in this article: https://www.oreilly.com/learni
 - autonomous.py implements a simple driving algorithm using the wheels and sonal
 - inception_server.py runs an image classifying microservice
 
+# Example Robots
+
+Here are two robots I made that use this software
+
+![Robots](https://joyfulgrit.files.wordpress.com/2013/10/img_0183.jpg?w=700)
+
 ## Wiring The Robot
 ### Sonar
 
