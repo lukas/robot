@@ -24,7 +24,7 @@ To get started, you should be able to make the robot work without the arm, sonar
 - autonomous.py implements a simple driving algorithm using the wheels and sonal
 - inception_server.py runs an image classifying microservice
 
-# Example Robots
+## Example Robots
 
 Here are two robots I made that use this software
 
