@@ -13,6 +13,7 @@ High level overview can be found in this article: https://www.oreilly.com/learni
 - Pretty much any chassis with DC motors - for example: https://www.amazon.com/Emgreat-Chassis-Encoder-wheels-Battery/dp/B00GLO5SMY/ref=sr_1_2?ie=UTF8&qid=1486959207&sr=8-2&keywords=robot+chassis
 - Any stepper motor arm - I used SainSmart DIY Control Palletizing Robot Arm for the arm (https://www.amazon.com/dp/B0179BTLZ2/ref=twister_B00YTW763Y?_encoding=UTF8&psc=1)
 
+To get started, you should be able to make the robot work without the arm, sonar and servo hat.
 
 ## Programs
 
@@ -32,11 +33,11 @@ Here are two robots I made that use this software
 ## Wiring The Robot
 ### Sonar
 
-If you want to use the default sonar configuation
+If you want to use the default sonar configuation, wire like this:
 
-Left sonar trigger GPIO pin 23 echo 24
-Center sonar trigger GPIO pin 17 echo 18
-Right sonar trigger GPIO pin 22 echo 27
+- Left sonar trigger GPIO pin 23 echo 24
+- Center sonar trigger GPIO pin 17 echo 18
+- Right sonar trigger GPIO pin 22 echo 27
 
 You can modify the pins by making a robot.conf file.
 
