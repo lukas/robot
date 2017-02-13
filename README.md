@@ -2,17 +2,21 @@
 
 This will run a simple robot with a webserver on a raspberry PI with the Adafruit Motor Hat.  I wrote this up for myself for fun and to help me remember how I set things up.
 
-This is all designed for a Raspberry PI 3 with the Adafruit Motor Hat for cars and the Adafruit Servo Hat for arms.
+High level overview can be found in this article: https://www.oreilly.com/learning/how-to-build-a-robot-that-sees-with-100-and-tensorflow
 
-I use cheap HC-SR04 sonar sensors but I think other ones will work fine.
+## Hardware
 
-Pretty much any chassis with a DC motors (4wd or 2wd) works well.
+- Raspberry PI 3
+- Adafruit Motor Hat (for wheels)
+- Adafruit Servo Hat (for arms)
+- HC-SR04 sonars
+- Pretty much any chassis with DC motors - for example: https://www.amazon.com/Emgreat-Chassis-Encoder-wheels-Battery/dp/B00GLO5SMY/ref=sr_1_2?ie=UTF8&qid=1486959207&sr=8-2&keywords=robot+chassis
+- Any stepper motor arm - I used SainSmart DIY Control Palletizing Robot Arm for the arm (https://www.amazon.com/dp/B0179BTLZ2/ref=twister_B00YTW763Y?_encoding=UTF8&psc=1)
+
 
 ## Programs
 
 - robot.py program will run commands from the commandline
-- drive_server.py runs a web server for controlling a robot wheels and arms
-
 - sonar.py tests sonar wired into GPIO ports
 - wheels.py tests simple DC motor wheels
 - arm.py tests a servo controlled robot arm
