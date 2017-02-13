@@ -106,6 +106,7 @@ Nginx is a lightway fast reverse proxy - we store the camera image in RAM and se
 copy the configuration file from nginx/nginx.conf to /etc/nginx/nginx.conf
 
 ```
+sudo apt-get install nginx
 sudo cp nginx/nginx.conf /etc/nginx/nginx.conf
 ```
 
