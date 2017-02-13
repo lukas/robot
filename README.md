@@ -45,10 +45,10 @@ You can modify the pins by making a robot.conf file.
 
 You can easily change this but this is what wheels.py expects
 
-M1 - Front Left
-M2 - Back Left (optional)
-M3 - Back Right (optional)
-M4 - Front Right 
+- M1 - Front Left
+- M2 - Back Left (optional - leave unwired for 2wd chassis)
+- M3 - Back Right (optional - leave unwired for 2wd chassis)
+- M4 - Front Right 
 
 
 ## Installation
@@ -73,6 +73,14 @@ Test that your hat is attached and visible with
 
 ```
 i2cdetect -y 1
+```
+
+Install this code
+
+```
+sudo apt-get install git
+git clone https://github.com/lukas/robot.git
+cd robot
 ```
 
 Install dependencies
